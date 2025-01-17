@@ -1,0 +1,8 @@
+.vs/
+bin/
+Migrations/
+obj/
+bibliotech.db
+bibliotech.db-wal
+bibliotech.db-shm
+bibliotech.http
