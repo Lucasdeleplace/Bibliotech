@@ -1,0 +1,34 @@
+﻿@{
+	ViewData["Title"] = "Create / Edit";
+} 
+
+<div class="text-center ">
+    <h1> Ajouter un livre  ou modifier un livre </h1>
+    <form asp-action="CreateEditLivre" asp-controller="Home" >
+        <ul>
+            <li>
+                <label for="titre">Nom&nbsp;:</label>
+                <input type="text"  name="titre" />
+            </li>
+            <li>
+                <label for="auteur">Auteur&nbsp;:</label>
+                <input type="text"  name="auteur" />
+            </li>
+            <li>
+                <label for="Isbn">Isbn&nbsp;:</label>
+                <input type="text"  name="isbn"></>
+            </li>
+            <li>
+                <label for="Disponibilite">Disponibilité&nbsp;:</label>
+                <input type = "text"  name="isbn"></>
+            </li>
+        </ul>
+        <div class="button">
+            <button type="submit">Enregistrer le livre</button>
+        </div>
+
+    </form>
+
+	
+
+</div>
