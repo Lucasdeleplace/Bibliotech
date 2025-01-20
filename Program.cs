@@ -1,3 +1,7 @@
+using bibliotech.Models;
+using Microsoft.EntityFrameworkCore;
+
+
 namespace bibliotech
 {
     public class Program
@@ -8,6 +12,9 @@ namespace bibliotech
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<BibliotechDb>(options =>
+                options.UseInMemoryDatabase("BibliotechDb")
+                );
 
             var app = builder.Build();
 
