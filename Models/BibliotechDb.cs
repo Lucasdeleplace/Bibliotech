@@ -6,6 +6,7 @@ namespace bibliotech.Models
     {
         public DbSet<Emprunt> Emprunts { get; set; }
         public DbSet<Livre> Livres { get; set; }
+        public DbSet<Membre> Membre { get; set; }
 
         public BibliotechDb(DbContextOptions<BibliotechDb> options)
             : base(options)

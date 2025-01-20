@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Membres";
+}
+
+@model List<Membre>
+<div class="text-center">
+    <h1 class="display-4">Liste des membres</h1>
+    <a asp-controller="Membre" asp-action="CreateEditMembre" class="btn btn-primary">Crée un Membre</a>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Nom
+                </th>
+                <th>
+                    Prenom
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var membre in Model)
+                {
+                    <tr>
+                        <td>
+                            @membre.Id
+                        </td>
+                        <td>
+                            @membre.Nom
+                        </td>
+                        <td>
+                            @membre.Prenom
+                        </td>
+                        <td>
+                            @membre.Email
+                        </td>
+                        <td>
+                            <a asp-controller="Membre" asp-action="CreateEditMembre" asp-route-id="@membre.Id">Edit</a>
+                            <a asp-controller="Membre" asp-action="DeleteMembre" asp-route-id="@membre.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

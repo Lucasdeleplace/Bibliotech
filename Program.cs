@@ -14,16 +14,16 @@ namespace bibliotech
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            // Ajoute des outils pour documenter l'API avec Swagger (exploration et génération de documentation).
+            // Ajoute des outils pour documenter l'API avec Swagger (exploration et gï¿½nï¿½ration de documentation).
             builder.Services.AddEndpointsApiExplorer();
-            // Définir une documentation pour l'API (titre, version, description, contact, etc.).
+            // Dï¿½finir une documentation pour l'API (titre, version, description, contact, etc.).
             builder.Services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "BibliotechAPI",
                     Version = "v1",
-                    Description = "Une API pour gérer des commandes",
+                    Description = "Une API pour gï¿½rer des commandes",
                     Contact = new OpenApiContact
                     {
                         Name = "Legroupe",
@@ -36,7 +36,7 @@ namespace bibliotech
             });
 
             var app = builder.Build();
-            // Construire l'application avec les services configurés.
+            // Construire l'application avec les services configurï¿½s.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
