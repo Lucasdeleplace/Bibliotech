@@ -32,34 +32,23 @@
             </tr>
         </thead>
         <tbody>
-            @{
-                foreach (var emprunt in Model)
-                {
-                    <tr>
-                        <td>
-                            @emprunt.Id
-                        </td>
-                        <td>
-                            @emprunt.Date_Emprunt
-                        </td>
-                        <td>
-                            @emprunt.Date_Retour
-                        </td>
-                        <td>
-                            @emprunt.Id_Membre
-                        </td>
-                        <td>
-                            @emprunt.Id_Livre
-                        </td>
-                        <td>
-                            <a asp-action="CreateEditEmprunt" asp-route-id="@emprunt.Id">Edit</a>
-                            <a asp-action="DeleteEmprunt" asp-route-id="@emprunt.Id">Delete</a>
-                        </td>
-                    </tr>
-                }
+            @foreach (var emprunt in Model)
+            {
+                <tr>
+                    <td>@emprunt.Id</td>
+                    <td>@emprunt.Date_Emprunt</td>
+                    <td>@emprunt.Date_Retour</td>
+                    <td>@emprunt.Id_Membre</td>
+                    <td>@emprunt.Id_Livre</td>
+                    <td>
+                        <a asp-action="CreateEditEmprunt" asp-route-id="@emprunt.Id">Edit</a>
+                        <form asp-action="DeleteEmprunt" asp-route-id="@emprunt.Id" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-link" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet emprunt ?');">Delete</button>
+                            <input type="hidden" name="_method" value="DELETE" />
+                        </form>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
 </div>
-
-

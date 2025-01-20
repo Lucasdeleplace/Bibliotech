@@ -66,17 +66,21 @@ namespace bibliotech.Controllers
 
             return RedirectToAction("Index");
         }
-        [HttpDelete]
+        [HttpPost]
+        [Route("/emprunts/{id}")]
         [SwaggerOperation(
-             Summary = "Supprimer un emprunt",
-             Description = "La description de mon Emprunt",
-             OperationId = "DeleteEmprunt")]
-        [SwaggerResponse(200, "Emprunt trouvé avec succes", typeof(Emprunt))]
+    Summary = "Supprimer un emprunt",
+    Description = "La description de mon Emprunt",
+    OperationId = "DeleteEmprunt")]
+        [SwaggerResponse(200, "Emprunt supprimé avec succès", typeof(Emprunt))]
         [SwaggerResponse(400, "Demande invalide")]
-        [Route("/emprunts")]
         public IActionResult DeleteEmprunt(int id)
         {
             var empruntInDb = _db.Emprunts.SingleOrDefault(emprunt => emprunt.Id == id);
+            if (empruntInDb == null)
+            {
+                return NotFound();
+            }
             _db.Emprunts.Remove(empruntInDb);
             _db.SaveChanges();
             return RedirectToAction("Index");
