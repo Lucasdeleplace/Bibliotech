@@ -14,15 +14,12 @@ namespace bibliotech.Controllers
             _db = db;
         }
 
-
-
         public IActionResult Index()
         {
             var allLivre = _db.Livres.ToList();
                 return View(allLivre);
         }
       public IActionResult CreateEditLivre(int ? id)
-
         {
            
             if (id != null)

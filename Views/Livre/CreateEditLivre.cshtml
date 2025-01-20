@@ -7,7 +7,7 @@
     <h1 class="display-4">Ajouter ou modifier un Livre</h1>
 
     <form asp-controller="Livre" asp-action="CreateEditLivreForm">
-       
+       <input hidden asp-for="Id"/>
         <div class="form-group">
             <label asp-for="Titre" class="form-label">Titre</label>
             <input class="form-control" type="text" asp-for="Titre" placeholder="Entrez le titre du livre" />
