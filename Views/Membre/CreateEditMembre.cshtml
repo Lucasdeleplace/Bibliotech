@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Create Edit Membre";
+}
+
+@model bibliotech.Models.Membre
+
+<div class="text-center">
+    <h1 class="display-4">Create Membre</h1>
+</div>
+
+<form asp-action="CreateEditMembreForm" asp-controller="Membre">
+    <input hidden type="number" asp-for="Id" />
+    <label>Nom</label>
+    <input type="text" placeholder="Deleplace" asp-for="Nom"/>
+    <label>Prenom</label>
+    <input type="text" placeholder="Lucas" asp-for="Prenom" />
+    <label>Email</label>
+    <input type="email" asp-for="Email" />
+
+    <button type="submit">Ok</button>
+</form>

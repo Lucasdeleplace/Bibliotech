@@ -1,3 +1,6 @@
+using bibliotech.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace bibliotech
 {
     public class Program
@@ -5,6 +8,8 @@ namespace bibliotech
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddDbContext<BibliotechDb>(opt => opt.UseSqlite("Data source=bibliotech.db"));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
