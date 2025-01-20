@@ -1,5 +1,6 @@
 using bibliotech.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 namespace bibliotech
 {
@@ -13,8 +14,38 @@ namespace bibliotech
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            // Ajoute des outils pour documenter l'API avec Swagger (exploration et génération de documentation).
+            builder.Services.AddEndpointsApiExplorer();
+            // Définir une documentation pour l'API (titre, version, description, contact, etc.).
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "BibliotechAPI",
+                    Version = "v1",
+                    Description = "Une API pour gérer des commandes",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Legroupe",
+                        Email = "legroupejla@example.com",
+                        Url = new Uri("https://cheerful-travesseiro-ea025c.netlify.app/")
+                    }
+                });
+
+                c.EnableAnnotations();
+            });
 
             var app = builder.Build();
+            // Construire l'application avec les services configurés.
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "BibliotechAPI V1");
+                    c.RoutePrefix = "swagger";
+                });
+            }
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
