@@ -1,0 +1,60 @@
+﻿@{
+	ViewData["Title"] = "Livre";
+}
+@model List<Livre>
+
+<div class="text-center">
+	<h1 class="display-4">Livre</h1>
+	<br />
+	
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					Id
+				</th>
+				<th>
+					Titre
+				</th>
+				<th>
+					Auteur
+				</th>
+				<th>
+					Isbn
+				</th>
+				<th>
+					Disponibilité
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			@{
+				foreach (var livre in Model)
+				{
+					<tr>
+						<td>
+							@livre.Id
+						</td>
+						<td>
+							@livre.Titre
+						</td>
+						<td>
+							@livre.Auteur
+						</td>
+						<td>
+							@livre.Isbn
+						</td>
+						<td>
+							@livre.Disponibilite
+						</td>
+						
+						<td>
+							<a asp-action="CreateEditLivre" asp-route-id="@livre.Id">Modifier</a>
+							<a asp-action="DeleteLivre" asp-route-id="@livre.Id">Supprimer</a>
+						</td>
+					</tr>
+				}
+			}
+		</tbody>
+	</table>
+</div>

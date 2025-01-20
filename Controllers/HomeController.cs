@@ -18,6 +18,7 @@ namespace bibliotech.Controllers
             return View();
         }
         [HttpGet]
+
         public IActionResult Privacy()
         {
             return View();

@@ -1,3 +1,4 @@
+
 .vs/
 bin/
 Migrations/
@@ -6,3 +7,4 @@ bibliotech.db
 bibliotech.db-wal
 bibliotech.db-shm
 bibliotech.http
+
