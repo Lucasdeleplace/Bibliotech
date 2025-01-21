@@ -1,12 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "Emprunts";
+    ViewData["Title"] = "Historique Emprunts";
 }
 
 @model List<Emprunt>
 
 <div class="text-center">
-    <h1 class="display-4">Liste des emprunts</h1>
-    <a asp-controller="Emprunts" asp-action="CreateEditEmprunt" class="btn btn-primary">Crée un emprunt</a>
+    <h1 class="display-4">Historique des emprunts de @ViewBag.Prenom @ViewBag.Nom</h1>
     <br />
     <table class="table">
         <thead>
@@ -52,4 +51,3 @@
         </tbody>
     </table>
 </div>
-

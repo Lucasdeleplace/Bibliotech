@@ -52,9 +52,15 @@ namespace bibliotech.Controllers
         }
         public IActionResult HistoriqueMembre(int id)
         {
-            var empruntMembreInDb = _db.Emprunts.Where(emprunt => emprunt.Id_Membre == id).ToList();
-            
+            var empruntMembreInDb = _db.Emprunts.Include(e => e.Membre).Where(emprunt => emprunt.Id_Membre == id).ToList();
+            var membre = _db.Membre.SingleOrDefault(m => m.Id == id);
+
+            ViewBag.Nom = membre?.Nom;
+            ViewBag.Prenom = membre?.Prenom;
+
             return View(empruntMembreInDb);
         }
+
+
     }
 }
