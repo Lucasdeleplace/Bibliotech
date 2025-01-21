@@ -26,6 +26,9 @@
 				<th>
 					Disponibilité
 				</th>
+				<th>
+					Actions
+				</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -50,8 +53,8 @@
 						</td>
 						
 						<td>
-							<a asp-action="CreateEditLivre" asp-route-id="@livre.Id">Modifier</a>
-							<a asp-action="DeleteLivre" asp-route-id="@livre.Id">Supprimer</a>
+							<a class="btn btn-primary" asp-action="CreateEditLivre" asp-route-id="@livre.Id">Modifier</a>
+							<a class="btn btn-danger" asp-action="DeleteLivre" asp-route-id="@livre.Id">Supprimer</a>
 						</td>
 					</tr>
 				}

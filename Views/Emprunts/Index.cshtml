@@ -1,54 +1,58 @@
 ﻿@{
-    ViewData["Title"] = "Emprunts";
+	ViewData["Title"] = "Emprunts";
 }
 
 @model List<Emprunt>
 
 <div class="text-center">
-    <h1 class="display-4">Liste des emprunts</h1>
-    <a asp-controller="Emprunts" asp-action="CreateEditEmprunt" class="btn btn-primary">Crée un emprunt</a>
-    <br />
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    ID
-                </th>
-                <th>
-                    Date d'emprunt
-                </th>
-                <th>
-                    Date de retour
-                </th>
-                <th>
-                    Id du membre
-                </th>
-                <th>
-                    Id du livre
-                </th>
-                <th>
-                    Action
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var emprunt in Model)
-            {
-                <tr>
-                    <td>@emprunt.Id</td>
-                    <td>@emprunt.Date_Emprunt</td>
-                    <td>@emprunt.Date_Retour</td>
-                    <td>@emprunt.Id_Membre</td>
-                    <td>@emprunt.Id_Livre</td>
-                    <td>
-                        <a asp-action="CreateEditEmprunt" asp-route-id="@emprunt.Id">Edit</a>
-                        <form asp-action="DeleteEmprunt" asp-route-id="@emprunt.Id" method="post" style="display:inline;">
-                            <button type="submit" class="btn btn-link" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet emprunt ?');">Delete</button>
-                            <input type="hidden" name="_method" value="DELETE" />
-                        </form>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+	<h1 class="display-4">Liste des emprunts</h1>
+	<a asp-controller="Emprunts" asp-action="CreateEditEmprunt" class="btn btn-primary">Crée un emprunt</a>
+	<br />
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					ID
+				</th>
+				<th>
+					Date d'emprunt
+				</th>
+				<th>
+					Date de retour
+				</th>
+				<th>
+					Id du membre
+				</th>
+				<th>
+					Id du livre
+				</th>
+				<th>
+					Action
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var emprunt in Model)
+			{
+				<tr>
+					<td>@emprunt.Id</td>
+					<td>@emprunt.Date_Emprunt</td>
+					<td>@emprunt.Date_Retour</td>
+					<td>@emprunt.Id_Membre</td>
+					<td>@emprunt.Id_Livre</td>
+					<td>
+						<a class="btn btn-primary" asp-action="CreateEditEmprunt" asp-route-id="@emprunt.Id">Edit</a>
+						<form asp-action="DeleteEmprunt" asp-route-id="@emprunt.Id" method="post" style="display:inline;">
+							<button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet emprunt ?');">Delete</button>
+							<input type="hidden" name="_method" value="DELETE" />
+						</form>
+						@if (!emprunt.Livre.Disponibilite)
+						{
+							<a class="btn btn-secondary" asp-action="RetourLivre" asp-route-id="@emprunt.Id">Rendu</a>
+						}
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
 </div>

@@ -45,8 +45,8 @@
                             @membre.Email
                         </td>
                         <td>
-                            <a asp-controller="Membre" asp-action="CreateEditMembre" asp-route-id="@membre.Id">Edit</a>
-                            <a asp-controller="Membre" asp-action="DeleteMembre" asp-route-id="@membre.Id">Delete</a>
+                            <a class="btn btn-primary" asp-controller="Membre" asp-action="CreateEditMembre" asp-route-id="@membre.Id">Edit</a>
+                            <a class="btn btn-danger" asp-controller="Membre" asp-action="DeleteMembre" asp-route-id="@membre.Id">Delete</a>
                         </td>
                     </tr>
                 }

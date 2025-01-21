@@ -13,5 +13,12 @@ namespace bibliotech.Models
         {
 
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Emprunt>()
+                .HasOne(e => e.Livre)
+                .WithMany()
+                .HasForeignKey(e => e.Id_Livre);
+        }
     }
 }

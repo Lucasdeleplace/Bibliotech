@@ -11,16 +11,16 @@
 <form asp-action="CreateEditEmpruntForm" asp-controller="Emprunts">
     <input hidden class="form-control" type="number" placeholder="0" asp-for="Id" />
 
-    <input hidden class="form-control" type="date" placeholder="" asp-for="Date_Emprunt" />
+    <input hidden class="form-control" type="datetime-local" placeholder="" asp-for="Date_Emprunt" />
 
     <label class="mt-4">Date de retour</label>
+    <input class="form-control" type="datetime-local" placeholder="Date de retour" asp-for="Date_Retour" />
 
-    <input class="form-control" type="date" placeholder="Date de retour" asp-for="Date_Retour" />
     <label class="mt-4">Id du Membre</label>
-
     <input class="form-control" type="number" placeholder="0" asp-for="Id_Membre" />
+
     <label class="mt-4">Id du livre</label>
     <input class="form-control" type="number" placeholder="0" asp-for="Id_Livre" />
 
-    <button class="btn btn-primary mt-4" type="submit">Ok</button>
+    <button class="btn btn-primary mt-4" type="submit">Enregistrer</button>
 </form>
