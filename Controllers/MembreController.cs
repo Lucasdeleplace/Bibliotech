@@ -1,5 +1,6 @@
 ﻿using bibliotech.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace bibliotech.Controllers
 {
@@ -48,6 +49,12 @@ namespace bibliotech.Controllers
             _db.Membre.Remove(membreInDb);
             _db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public IActionResult HistoriqueMembre(int id)
+        {
+            var empruntMembreInDb = _db.Emprunts.Where(emprunt => emprunt.Id_Membre == id).ToList();
+            
+            return View(empruntMembreInDb);
         }
     }
 }
