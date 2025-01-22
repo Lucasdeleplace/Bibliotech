@@ -40,9 +40,9 @@
                     <td>@emprunt.Id_Membre</td>
                     <td>@emprunt.Id_Livre</td>
                     <td>
-                        <a asp-action="CreateEditEmprunt" asp-route-id="@emprunt.Id">Edit</a>
+                        <a class="btn btn-primary" asp-action="CreateEditEmprunt" asp-route-id="@emprunt.Id">Edit</a>
                         <form asp-action="DeleteEmprunt" asp-route-id="@emprunt.Id" method="post" style="display:inline;">
-                            <button type="submit" class="btn btn-link" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet emprunt ?');">Delete</button>
+                            <button class="btn btn-danger" type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet emprunt ?');">Delete</button>
                             <input type="hidden" name="_method" value="DELETE" />
                         </form>
                     </td>

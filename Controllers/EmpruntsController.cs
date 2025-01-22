@@ -1,5 +1,6 @@
 ﻿using bibliotech.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -28,13 +29,11 @@ namespace bibliotech.Controllers
             return View(allEmprunt);
         }
 
-
-
         [HttpGet]
         [SwaggerOperation(
-             Summary = "Afficher un Emprunt",
-             Description = "La description de mon Emprunt",
-             OperationId = "Get Emprunt by id")]
+     Summary = "Afficher un Emprunt",
+     Description = "La description de mon Emprunt",
+     OperationId = "Get Emprunt by id")]
         [SwaggerResponse(200, "Emprunt trouvé avec succes", typeof(Emprunt))]
         [SwaggerResponse(400, "Demande invalide")]
         [Route("/emprunts/{id}")]
@@ -46,8 +45,18 @@ namespace bibliotech.Controllers
                 return View(empruntInDb);
             }
 
+            var membres = _db.Membre.Select(m => new
+            {
+                m.Id,
+                NomComplet = m.Nom + " " + m.Prenom + " " + m.Email
+            }).ToList();
+
+            ViewBag.Membres = new SelectList(membres, "Id", "NomComplet");
+            ViewBag.LivresDisponibles = new SelectList(_db.Livres.Where(l => l.Disponibilite), "Id", "Titre");
+
             return View();
         }
+
         [HttpPost]
         [SwaggerOperation(
      Summary = "Crée ou modifier un emprunt",
