@@ -21,7 +21,7 @@ namespace bibliotech.Controllers
          OperationId = "Get Livre")]
         [SwaggerResponse(200, "Memres trouvé avec success", typeof(Livre))]
         [SwaggerResponse(400, "Demande invalide")]
-        [Route("/membres")]
+        [Route("/membre")]
         public IActionResult Index() 
         {
             var allMembre = _db.Membre.ToList();
@@ -35,7 +35,7 @@ namespace bibliotech.Controllers
           OperationId = "Get Membre by id")]
         [SwaggerResponse(200, "Membre trouvé avec succes", typeof(Livre))]
         [SwaggerResponse(400, "Demande invalide")]
-        [Route("/membres/{id}")]
+        [Route("/membre/{id}")]
         public IActionResult CreateEditMembre(int? id)
         {
             if(id != null)
@@ -53,7 +53,7 @@ namespace bibliotech.Controllers
          OperationId = "Post/Put")]
         [SwaggerResponse(200, "membrere crée avec succes", typeof(Livre))]
         [SwaggerResponse(400, "Demande invalide")]
-        [Route("/membres")]
+        [Route("/membre")]
         public IActionResult CreateEditMembreForm(Membre model)
         {
             if(model.Id == 0)
@@ -72,7 +72,7 @@ namespace bibliotech.Controllers
         }
 
         [HttpPost]
-        [Route("/membres/{id}")]
+        [Route("/membre/{id}")]
         [SwaggerOperation(
           Summary = "Supprimer un membre",
           Description = "La description de mon membre",

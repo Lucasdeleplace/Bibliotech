@@ -22,7 +22,7 @@ namespace bibliotech.Controllers
           OperationId = "Get Livre")]
         [SwaggerResponse(200, "Livres trouvé avec success", typeof(Livre))]
         [SwaggerResponse(400, "Demande invalide")]
-        [Route("/livres")]
+        [Route("/livre")]
 
         public IActionResult Index()
         {
@@ -37,7 +37,7 @@ namespace bibliotech.Controllers
           OperationId = "Get Livre by id")]
         [SwaggerResponse(200, "Livre trouvé avec succes", typeof(Livre))]
         [SwaggerResponse(400, "Demande invalide")]
-        [Route("/livres/{id}")]
+        [Route("/livre/{id}")]
         public IActionResult CreateEditLivre(int ? id)
         {
            
@@ -57,7 +57,7 @@ namespace bibliotech.Controllers
           OperationId = "Post/Put")]
         [SwaggerResponse(200, "Livre trouvé avec succes", typeof(Livre))]
         [SwaggerResponse(400, "Demande invalide")]
-        [Route("/livres")]
+        [Route("/livre")]
 
         public IActionResult CreateEditLivreForm(Livre model)
         {
@@ -76,7 +76,7 @@ namespace bibliotech.Controllers
         }
 
         [HttpPost]
-        [Route("/livres/{id}")]
+        [Route("/livre/{id}")]
         [SwaggerOperation(
           Summary = "Supprimer un livre",
           Description = "La description de mon Livre",
