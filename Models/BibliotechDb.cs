@@ -19,6 +19,11 @@ namespace bibliotech.Models
                 .HasOne(e => e.Livre)
                 .WithMany()
                 .HasForeignKey(e => e.Id_Livre);
+
+            modelBuilder.Entity<Emprunt>()
+                .HasOne(e => e.Membre)
+                .WithMany()
+                .HasForeignKey(e => e.Id_Membre);
         }
     }
 }
