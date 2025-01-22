@@ -1,5 +1,6 @@
 ﻿using bibliotech.Models;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 
 namespace bibliotech.Controllers
@@ -14,12 +15,30 @@ namespace bibliotech.Controllers
             _db = db;
         }
 
+        [HttpGet]
+        [SwaggerOperation(
+          Summary = "Afficher les livres disponible",
+          Description = "La description des livres",
+          OperationId = "Get Livre")]
+        [SwaggerResponse(200, "Livres trouvé avec success", typeof(Livre))]
+        [SwaggerResponse(400, "Demande invalide")]
+        [Route("/livres")]
+
         public IActionResult Index()
         {
             var allLivre = _db.Livres.ToList();
                 return View(allLivre);
         }
-      public IActionResult CreateEditLivre(int ? id)
+
+        [HttpGet]
+        [SwaggerOperation(
+          Summary = "Afficher un Livre",
+          Description = "La description de mon Livre",
+          OperationId = "Get Livre by id")]
+        [SwaggerResponse(200, "Livre trouvé avec succes", typeof(Livre))]
+        [SwaggerResponse(400, "Demande invalide")]
+        [Route("/livres/{id}")]
+        public IActionResult CreateEditLivre(int ? id)
         {
            
             if (id != null)
@@ -29,7 +48,17 @@ namespace bibliotech.Controllers
             }
             return View();
         }
-        
+
+
+        [HttpPost]
+        [SwaggerOperation(
+          Summary = "Ajouter ou modifier un livre",
+          Description = "La description de mon livre",
+          OperationId = "Post/Put")]
+        [SwaggerResponse(200, "Livre trouvé avec succes", typeof(Livre))]
+        [SwaggerResponse(400, "Demande invalide")]
+        [Route("/livres")]
+
         public IActionResult CreateEditLivreForm(Livre model)
         {
             if (model.Id == 0)
@@ -45,6 +74,15 @@ namespace bibliotech.Controllers
             return RedirectToAction("Index");
 
         }
+
+        [HttpPost]
+        [Route("/livres/{id}")]
+        [SwaggerOperation(
+          Summary = "Supprimer un livre",
+          Description = "La description de mon Livre",
+          OperationId = "DeleteLivre")]
+        [SwaggerResponse(200, "Livre supprimé avec succès", typeof(Livre))]
+        [SwaggerResponse(400, "Demande invalide")]
         public IActionResult DeleteLivre(int id)
         {
             var livreInDb = _db.Livres.SingleOrDefault(livre => livre.Id == id);
