@@ -7,7 +7,7 @@
 	<h1 class="display-4">Livre</h1>
 	<a asp-controller="Livre" asp-action="CreateEditLivre" class="btn btn-primary"> Ajouter</a>
 	<br />
-	
+
 	<table class="table">
 		<thead>
 			<tr>
@@ -51,10 +51,13 @@
 						<td>
 							@livre.Disponibilite
 						</td>
-						
+
 						<td>
 							<a class="btn btn-primary" asp-action="CreateEditLivre" asp-route-id="@livre.Id">Modifier</a>
-							<a class="btn btn-danger" asp-action="DeleteLivre" asp-route-id="@livre.Id">Supprimer</a>
+							<form asp-action="DeleteLivre" asp-route-id="@livre.Id" method="post" style="display:inline;">
+								<button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce livre ?');">Delete</button>
+								<input type="hidden" name="_method" value="DELETE" />
+							</form>
 						</td>
 					</tr>
 				}

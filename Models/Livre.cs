@@ -6,9 +6,9 @@
 
         public string  Titre {get; set;}
 
-        public  string Auteur { get; set; }
-        public int Isbn { get; set; }
-        
+        public string Auteur { get; set; }
+        public required int Isbn { get; set; }
+
         public bool Disponibilite { get; set; }
     }
 }

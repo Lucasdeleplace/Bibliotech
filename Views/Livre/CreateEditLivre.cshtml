@@ -11,7 +11,7 @@
     <input hidden asp-for="Id" />
     <div class="form-group">
         <label asp-for="Titre" class="form-label">Titre</label>
-        <input class="form-control" type="text" asp-for="Titre" placeholder="Entrez le titre du livre" />
+        <input required class="form-control" type="text" asp-for="Titre" placeholder="Entrez le titre du livre" />
         <span asp-validation-for="Titre" class="text-danger"></span>
     </div>
 
@@ -24,7 +24,7 @@
 
     <div class="form-group">
         <label asp-for="Isbn" class="form-label">ISBN</label>
-        <input class="form-control" type="number" asp-for="Isbn" placeholder="Entrez le numéro ISBN" />
+		<input required min="1000000000000" max="9999999999999" class="form-control" type="number" asp-for="Isbn" placeholder="Entrez le numéro ISBN" />
         <span asp-validation-for="Isbn" class="text-danger"></span>
     </div>
 

@@ -112,6 +112,7 @@ namespace bibliotech.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         [HttpGet]
         [Route("/retourEmprunt/{id}")]
         [SwaggerOperation(

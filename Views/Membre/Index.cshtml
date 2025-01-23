@@ -46,7 +46,10 @@
                         </td>
                         <td>
                             <a class="btn btn-primary" asp-controller="Membre" asp-action="CreateEditMembre" asp-route-id="@membre.Id">Edit</a>
-                            <a class="btn btn-danger" asp-controller="Membre" asp-action="DeleteMembre" asp-route-id="@membre.Id">Delete</a>
+                            <form asp-action="DeleteMembre" asp-route-id="@membre.Id" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce Membre ?');">Delete</button>
+                                <input type="hidden" name="_method" value="DELETE" />
+                            </form>
                             <a class="btn btn-secondary" asp-controller="Membre" asp-action="HistoriqueMembre" asp-route-id="@membre.Id">Historique</a>
 
                         </td>
