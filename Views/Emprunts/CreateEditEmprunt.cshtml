@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Create Edit Emprunt";
+}
+
+@model bibliotech.Models.Emprunt
+
+<div class="text-center">
+    <h1 class="display-4">Create Emprunt</h1>
+</div>
+
+<form asp-action="CreateEditEmpruntForm" asp-controller="Emprunts">
+
+    <input hidden class="form-control" type="number" asp-for="Id" />
+
+    <input hidden type="datetime-local" class="form-control" asp-for="Date_Emprunt" />
+
+    <label class="mt-4">Date de retour</label>
+    <input required type="datetime-local" class="form-control" asp-for="Date_Retour" min="@DateTime.Now.AddDays(1).ToString("yyyy-MM-ddTHH:mm")" />
+
+    <label class="mt-4">Membre</label>
+    <select required class="form-control" asp-for="Id_Membre" asp-items="ViewBag.Membres"></select>
+
+    <label class="mt-4">Livre</label>
+    <select required class="form-control" asp-for="Id_Livre" asp-items="ViewBag.LivresDisponibles"></select>
+
+    <button class="btn btn-primary mt-4" type="submit">Enregistrer</button>
+</form>
