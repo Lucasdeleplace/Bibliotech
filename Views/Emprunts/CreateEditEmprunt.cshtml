@@ -15,7 +15,7 @@
     <input hidden type="datetime-local" class="form-control" asp-for="Date_Emprunt" />
 
     <label class="mt-4">Date de retour</label>
-    <input required type="datetime-local" class="form-control" asp-for="Date_Retour" />
+    <input required type="datetime-local" class="form-control" asp-for="Date_Retour" min="@DateTime.Now.AddDays(1).ToString("yyyy-MM-ddTHH:mm")" />
 
     <label class="mt-4">Membre</label>
     <select required class="form-control" asp-for="Id_Membre" asp-items="ViewBag.Membres"></select>
