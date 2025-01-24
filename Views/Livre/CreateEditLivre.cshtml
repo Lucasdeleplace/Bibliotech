@@ -26,7 +26,7 @@
 
     <div class="form-group">
         <label asp-for="Isbn" class="form-label">ISBN</label>
-        <input  class="form-control" type="number" asp-for="Isbn" minlength="1000000000000" maxlength="9999999999999" placeholder="Entrez le numéro ISBN" />
+        <input  class="form-control" type="number" asp-for="Isbn" min="1000000000000" max="9999999999999" placeholder="Entrez le numéro ISBN" />
         <span asp-validation-for="Isbn"  class="text-danger"></span>
     </div>
 
