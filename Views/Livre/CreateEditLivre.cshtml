@@ -1,7 +1,9 @@
 ﻿@{
 	ViewData["Title"] = "Create / Edit";
 } 
-@model bibliotech.Models.Livre
+@model bibliotech.Models.Livre  //affichage des erreurs coté client
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 
 <div class="text-center">
     <h1 class="display-4">Ajouter ou modifier un Livre</h1>
@@ -24,8 +26,8 @@
 
     <div class="form-group">
         <label asp-for="Isbn" class="form-label">ISBN</label>
-        <input class="form-control" type="number" asp-for="Isbn" placeholder="Entrez le numéro ISBN" />
-        <span asp-validation-for="Isbn" class="text-danger"></span>
+        <input  class="form-control" type="number" asp-for="Isbn" minlength="1000000000000" maxlength="9999999999999" placeholder="Entrez le numéro ISBN" />
+        <span asp-validation-for="Isbn"  class="text-danger"></span>
     </div>
 
 
@@ -34,9 +36,11 @@
         <label asp-for="Disponibilite" class="form-check-label">Disponible</label>
     </div>
 
-
-    <button class="btn btn-primary mt-4" type="submit">Enregistrer</button>
+    
+    <button class="btn btn-primary mt-4" type="submit" disabled="@ViewData.ModelState.IsValid">Enregistrer</button>
 </form>
+
+
 
 
 

@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "titre": "L'Étranger",
+        "auteur": "Albert Camus",
+        "isbn": "9782070360024",
+        "disponibilite": true
+    },
+    {
+        "id": 2,
+        "titre": "1984",
+        "auteur": "George Orwell",
+        "isbn": "9780451524935",
+        "disponibilite": true
+    },
+    {
+        "id": 3,
+        "titre": "Le Petit Prince",
+        "auteur": "Antoine de Saint-Exupéry",
+        "isbn": "9780156013987",
+        "disponibilite": true
+    }
+]

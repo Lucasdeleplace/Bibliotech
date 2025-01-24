@@ -1,13 +1,51 @@
 ﻿using bibliotech.Models;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using bibliotech.Helpers;
 
 
 namespace bibliotech.Controllers
-{
+    {
     public class LivreController : Controller
 
     {
+
+
+
+    [ApiController]
+    [Route("api/livres")]
+    public class LivresController : ControllerBase
+    {
+        private readonly string _jsonFilePath;
+
+        public LivresController(IWebHostEnvironment env)
+        {
+            // Définit le chemin du fichier JSON
+            _jsonFilePath = Path.Combine(env.ContentRootPath, "Data", "livres.json");
+        }
+
+        [HttpGet]
+        public IActionResult GetAllLivres()
+        {
+            try
+            {
+                // Charger les livres à partir du fichier JSON
+                var livres = JsonFileHelper.LoadLivresFromFile(_jsonFilePath);
+                return Ok(livres);
+            }
+            catch (FileNotFoundException ex)
+            {
+                return NotFound(new { Message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "Une erreur est survenue.", Details = ex.Message });
+            }
+        }
+    }
+
+
+        
         private readonly BibliotechDb _db;
 
         public LivreController(BibliotechDb db)
@@ -61,7 +99,12 @@ namespace bibliotech.Controllers
 
         public IActionResult CreateEditLivreForm(Livre model)
         {
-            if (model.Id == 0)
+         if (ModelState.IsValid)
+        {
+            // Si le model n'est pas valide , retourn la vue avec les erreurs
+            return View(model); 
+        }
+            if (model.Id == 0 )
             {
                 _db.Livres.Add(model);
             }
@@ -94,6 +137,7 @@ namespace bibliotech.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+        
         
     }
 }
